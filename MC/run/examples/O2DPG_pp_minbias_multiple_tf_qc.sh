@@ -27,7 +27,13 @@ ${O2DPG_ROOT}/MC/bin/o2dpg_sim_workflow.py -eCM 14000  -col pp -gen pythia8 -pro
 
 # run workflow
 # ${O2DPG_ROOT}/MC/bin/o2_dpg_workflow_runner.py -f workflow.json -tt vertexQC
-${O2DPG_ROOT}/MC/bin/o2_dpg_workflow_runner.py -f workflow.json
+#${O2DPG_ROOT}/MC/bin/o2_dpg_workflow_runner.py -f workflow.json
+
+${O2DPG_ROOT}/MC/bin/o2_dpg_workflow_runner.py -f workflow.json -tt aod
+
+chmod 000 /tmp/token*
+${O2DPG_ROOT}/MC/bin/o2_dpg_workflow_runner.py -f workflow.json --target-labels QC
+chmod 400 /tmp/token*
 
 # publish the current dir to ALIEN
 # copy_ALIEN
